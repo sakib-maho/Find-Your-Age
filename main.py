@@ -10,14 +10,14 @@ def Calculate_My_Age(input_day, input_month, input_year):
         month = int(month) - 1
         day = int(day) + days_in_month[input_month - 1]
 
-    if input_month > month:
+    if input_month > int(month):
         year = int(year) - 1
-        month = month + 12
+        month = int(month) + 12
 
-    calculated_date = day - input_day
+    calculated_date = int(day) - input_day
     calculated_month = month - input_month
     calculated_year = year - input_year
-    
+
     print(f"You're {calculated_year} Year(s), {calculated_month} Month(s), {calculated_date} Day(s) old...!!!")
 
 
