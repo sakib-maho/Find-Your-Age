@@ -5,13 +5,20 @@ def Calculate_My_Age(input_day, input_month, input_year):
     today = date.today()
 
     day, month, year = today.strftime("%d"), today.strftime("%m"), today.strftime("%Y")
+    days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    if input_day > int(day):
+        month = int(month) - 1
+        day = int(day) + days_in_month[input_month - 1]
 
-    my_age_years = int(year) - input_year
-    my_age_month = int(month) - input_month
-    my_age_month = my_age_month * -1 if my_age_month < 0 else my_age_month
-    my_age_day = int(day) - input_day
-    my_age_day = my_age_day * -1 if my_age_day < 0 else my_age_day
-    print(f"You're {my_age_years} Year(s), {my_age_month} Month(s), {my_age_day} Day(s) old...!!!")
+    if input_month > month:
+        year = int(year) - 1
+        month = month + 12
+
+    calculated_date = day - input_day
+    calculated_month = month - input_month
+    calculated_year = year - input_year
+    
+    print(f"You're {calculated_year} Year(s), {calculated_month} Month(s), {calculated_date} Day(s) old...!!!")
 
 
 input_day, input_month, input_year = map(int, input(
